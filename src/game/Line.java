@@ -50,4 +50,10 @@ public class Line {
         else
             return "";
     }
+
+    public boolean equals(Object other) {
+        if (other instanceof Line) {
+            return first == ((Line) other).first && second == ((Line) other).second;
+        }
+    }
 }
