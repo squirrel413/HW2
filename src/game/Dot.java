@@ -8,6 +8,7 @@ public class Dot {
 
     //Constructor
     public Dot (int row, int column) {
+        assert row >= 0 && column >= 0;
         this.row = row;
         this.column = column;
     }
@@ -28,6 +29,9 @@ public class Dot {
     public boolean equals(Object other) {
         if (other instanceof Dot) {
             return row == ((Dot) other).row && column == ((Dot) other).column;
+        }
+        else {
+            return false;
         }
     }
 }

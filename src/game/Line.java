@@ -22,25 +22,15 @@ public class Line {
         return second;
     }
 
-    public Player getOwner() {
+    //public Player getOwner() {}
 
-    }
+    //public ArrayList<Box> getBoxes() {}
 
-    public ArrayList<Box> getBoxes() {
+    //public boolean hasOwner() {}
 
-    }
+    //public void claim(Player owner) {}
 
-    public boolean hasOwner() {
-
-    }
-
-    public void claim(Player owner) {
-
-    }
-
-    public void setBox(Box box) {
-
-    }
+    //public void setBox(Box box) {}
 
     public String toString() {
         if (first.getRow() == second.getRow())
@@ -54,6 +44,9 @@ public class Line {
     public boolean equals(Object other) {
         if (other instanceof Line) {
             return first == ((Line) other).first && second == ((Line) other).second;
+        }
+        else {
+            return false;
         }
     }
 }

@@ -4,26 +4,30 @@ public class Lines {
     //Field variables
     private final int rows;
     private final int columns;
-    private final Dot[][] dots;
+    private Dot[][] dots;
 
     //Constructor
     public Lines(int rows, int columns, Dot[][] dots) {
         this.rows = rows;
         this.columns = columns;
         this.dots = dots;
-        for (int i = 1; i <= rows; i++) {
-            for (int j = 1; j <= columns; j++) {
-                dots = new Dot[i][j];
-            }
-        }
+
+       // for (int i = 0; i <= rows; i++) {
+            //for (int j = 0; j <= columns; j++) {
+                //dots[i][j] = new Dot(i, j);
+          //  }
+        //}
     }
 
     //Methods
     public Line getLine(int row1, int column1, int row2, int column2) {
-        return ;
+        if (row1 <= row2 && column1 <= column2)
+            return new Line(dots[row1][column1], dots[row2][column2]);
+        else
+            return null;
     }
 
     public int size() {
-        return 2 * rows * columns - rows - columns;
+        return 2 * (rows+1) * (columns+1) - (rows+1) - (columns+1);
     }
 }

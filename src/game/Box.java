@@ -3,9 +3,9 @@ package game;
 public class Box {
 
     // Field Variables
-    private int row;
-    private int column;
-    private Lines lines;
+    private final int row;
+    private final int column;
+    private final Lines lines;
 
     //Constructor
     public Box(int row, int column, Lines lines) {
@@ -23,36 +23,24 @@ public class Box {
         return column;
     }
 
-    public Player getOwner() {
-        return null;
-    }
+    //public Player getOwner() {}
 
-    public Line getTopLine() {
+    //public Line getTopLine() {}
 
-    }
+    //public Line getRightLine() {}
 
-    public Line getRightLine() {
+    //public Line getBottomLine() {}
 
-    }
+    //public Line getLeftLine() {}
 
-    public Line getBottomLine() {
+    //public void claim(Player owner){}
 
-    }
-
-    public Line getLeftLine() {
-
-    }
-
-    public void claim(Player owner){
-
-    }
-
-    public String toString() {
-
-    }
+    //public String toString() {}
 
     public boolean equals(Object other){
         if (other instanceof Box)
             return row == ((Box) other).row && column == ((Box) other).column && lines == ((Box) other).lines;
+        else
+            return false;
     }
 }
