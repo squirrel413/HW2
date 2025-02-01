@@ -6,12 +6,19 @@ public class Line {
     //Field variables
     private final Dot first;
     private final Dot second;
-    static final String EMPTY = "";
+    static final String EMPTY = " ";
     static final String HORI_LINE = "-";
     static final String VERT_LINE = "|";
+    public static ArrayList<Line> red_lines =  new ArrayList<Line>();
+    public static ArrayList<Line> blue_lines =  new ArrayList<Line>();
+    public static ArrayList<Box> boxes = new ArrayList<Box>();
 
     //Constructor
     public Line(Dot first, Dot second) {
+        assert ((second.getRow() - first.getRow()) < 2);
+        assert ((second.getRow() - first.getRow()) >= 0);
+        assert ((second.getColumn() - first.getColumn()) < 2);
+        assert ((second.getColumn() - first.getColumn()) >= 0);
         this.first = first;
         this.second = second;
     }
@@ -25,23 +32,50 @@ public class Line {
         return second;
     }
 
-    //public Player getOwner() {}
+    public Player getOwner() {
+        if (red_lines.contains(this))
+            return Player.RED;
+        if (blue_lines.contains(this))
+            return Player.BLUE;
+        else
+            return Player.NONE;
+    }
 
-    //public ArrayList<Box> getBoxes() {}
+    public ArrayList<Box> getBoxes() {
+        return boxes;
+    }
 
-    //public boolean hasOwner() {}
+    public boolean hasOwner() {
+        return getOwner() != Player.NONE;
+    }
 
-    //public void claim(Player owner) {}
+    public void claim(Player owner) {
+        if (owner.equals(Player.RED)) {
+            red_lines.add(this);
+        }
+        if (owner.equals(Player.BLUE)) {
+            blue_lines.add(this);
+        }
+    }
 
-    //public void setBox(Box box) {}
+    public void setBox(Box box) {
+        box.getLeftLine();
+        box.getRightLine();
+        box.getTopLine();
+        box.getBottomLine();
+    }
 
     public String toString() {
-        if (first.getRow() == second.getRow())
-                return HORI_LINE;
-        else if (first.getColumn() == second.getColumn())
-                return VERT_LINE;
-        else
+        if (getOwner() == Player.NONE) {
             return EMPTY;
+        }
+        else
+            if (first.getRow() == second.getRow())
+                    return HORI_LINE;
+            else if (first.getColumn() == second.getColumn())
+                    return VERT_LINE;
+            else
+                return EMPTY;
     }
 
     public boolean equals(Object other) {
