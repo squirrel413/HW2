@@ -3,14 +3,19 @@ package game;
 public enum Player {
 
     //enum Values
-    RED,
-    BLUE,
-    NONE;
+    RED("Red"),
+    BLUE("Blue"),
+    NONE("None");
 
+    private final String player;
     //Constructor
+    Player (String player) {
+        this.player = player;
+    }
 
     //Methods
-    public static Player[] Values() {
-        return Player.values();
+    //will not override values and valueOf as enum inherently has them
+    public String getLabel() {
+     return player;
     }
 }

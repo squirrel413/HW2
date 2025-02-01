@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Line {
     //Field variables
-    private Dot first;
-    private Dot second;
+    private final Dot first;
+    private final Dot second;
 
     //Constructor
     public Line(Dot first, Dot second) {
