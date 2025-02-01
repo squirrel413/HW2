@@ -46,7 +46,7 @@ public class Line {
 
     public boolean equals(Object other) {
         if (other instanceof Line) {
-            return first == ((Line) other).getFirst() && second == ((Line) other).getSecond();
+            return first.equals(((Line) other).getFirst()) && second.equals(((Line) other).getSecond());
         }
         else {
             return false;

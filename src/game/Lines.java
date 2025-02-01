@@ -16,7 +16,7 @@ public class Lines {
     //Methods
     public Line getLine(int row1, int column1, int row2, int column2) {
         if (row1 <= row2 && column1 <= column2)
-            return new Line(new Dot(row1,column1), new Dot(row2,column2));
+            return new Line(dots[row1][column1], dots[row2][column2]);
         else
             return null;
     }
