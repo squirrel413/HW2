@@ -25,13 +25,21 @@ public class Box {
 
     //public Player getOwner() {}
 
-    //public Line getTopLine() {}
+    public Line getTopLine() {
+        return lines.getLine(row, column, row,column+1);
+    }
 
-    //public Line getRightLine() {}
+    public Line getRightLine() {
+        return lines.getLine(row, column+1, row+1, column+1);
+    }
 
-    //public Line getBottomLine() {}
+    public Line getBottomLine() {
+        return lines.getLine(row+1, column, row+1, column+1);
+    }
 
-    //public Line getLeftLine() {}
+    public Line getLeftLine() {
+        return lines.getLine(row, column, row+1, column);
+    }
 
     //public void claim(Player owner){}
 
