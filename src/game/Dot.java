@@ -28,7 +28,7 @@ public class Dot {
 
     public boolean equals(Object other) {
         if (other instanceof Dot) {
-            return row == ((Dot) other).row && column == ((Dot) other).column;
+            return row == ((Dot) other).getRow() && column == ((Dot) other).getColumn();
         }
         else {
             return false;

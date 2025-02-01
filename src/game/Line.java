@@ -6,6 +6,9 @@ public class Line {
     //Field variables
     private final Dot first;
     private final Dot second;
+    static final String EMPTY = "";
+    static final String HORI_LINE = "-";
+    static final String VERT_LINE = "|";
 
     //Constructor
     public Line(Dot first, Dot second) {
@@ -34,16 +37,16 @@ public class Line {
 
     public String toString() {
         if (first.getRow() == second.getRow())
-                return "-";
+                return HORI_LINE;
         else if (first.getColumn() == second.getColumn())
-                return "|";
+                return VERT_LINE;
         else
-            return "";
+            return EMPTY;
     }
 
     public boolean equals(Object other) {
         if (other instanceof Line) {
-            return first == ((Line) other).first && second == ((Line) other).second;
+            return first == ((Line) other).getFirst() && second == ((Line) other).getSecond();
         }
         else {
             return false;

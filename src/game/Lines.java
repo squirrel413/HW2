@@ -11,18 +11,12 @@ public class Lines {
         this.rows = rows;
         this.columns = columns;
         this.dots = dots;
-
-       // for (int i = 0; i <= rows; i++) {
-            //for (int j = 0; j <= columns; j++) {
-                //dots[i][j] = new Dot(i, j);
-          //  }
-        //}
     }
 
     //Methods
     public Line getLine(int row1, int column1, int row2, int column2) {
         if (row1 <= row2 && column1 <= column2)
-            return new Line(dots[row1][column1], dots[row2][column2]);
+            return new Line(new Dot(row1,column1), new Dot(row2,column2));
         else
             return null;
     }
