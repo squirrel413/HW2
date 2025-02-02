@@ -12,7 +12,7 @@ public class Line {
     private final Dot first;
     private final Dot second;
     private Player owner;
-    public static ArrayList<Box> boxes = new ArrayList<Box>();
+    private static ArrayList<Box> boxes;
 
     //Constructor
     public Line(Dot first, Dot second) {
@@ -23,6 +23,8 @@ public class Line {
         this.first = first;
         this.second = second;
         this.owner = Player.NONE;
+        boxes = new ArrayList<>();
+
     }
 
     //Methods
@@ -42,19 +44,16 @@ public class Line {
         return boxes;
     }
 
+    public void setBox(Box box) {
+        boxes.add(box);
+    }
+
     public boolean hasOwner() {
         return getOwner() != Player.NONE;
     }
 
     public void claim(Player owner) {
         this.owner = owner;
-    }
-
-    public void setBox(Box box) {
-        if (this.toString().equals("|"))
-            try {
-                boxes.add()
-            } catch (NullPointerException e) {};
     }
 
     public String toString() {
