@@ -59,10 +59,7 @@ public class Line {
     }
 
     public void setBox(Box box) {
-        box.getLeftLine();
-        box.getRightLine();
-        box.getTopLine();
-        box.getBottomLine();
+
     }
 
     public String toString() {
