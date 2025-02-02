@@ -24,6 +24,7 @@ public class Line {
         this.second = second;
         this.owner = Player.NONE;
         boxes = new ArrayList<>();
+        boxes.add(Box())
 
     }
 
@@ -54,6 +55,8 @@ public class Line {
 
     public void claim(Player owner) {
         this.owner = owner;
+        for (int i=0; i<boxes.size(); i++)
+            getBoxes().get(i).claim(owner);
     }
 
     public String toString() {

@@ -23,6 +23,7 @@ public class Lines {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j <= columns; j++) {
                 verti[i][j] = (new Line(dots[i][j], dots[i + 1][j]));
+                verti[i][j].setBox(Box box = new box(i,j));
             }
         }
         for (int j = 0; j < columns; j++) {
