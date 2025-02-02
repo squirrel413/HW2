@@ -9,6 +9,9 @@ public class Lines {
     private Dot[][] dots;
     private static final ArrayList<Line> lines;
 
+    //Make two arrays for storing horizontal lines and vertical lines
+    //using the leading
+
     //Constructor
     public Lines(int rows, int columns, Dot[][] dots) {
         this.rows = rows;
@@ -29,7 +32,7 @@ public class Lines {
     //Methods
     public Line getLine(int row1, int column1, int row2, int column2) {
         if (row1 <= row2 && column1 <= column2)
-            return ;
+            return null;
         else
             return null;
     }
