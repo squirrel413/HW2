@@ -50,7 +50,12 @@ public class Line {
         this.owner = owner;
     }
 
-    //public void setBox(Box box) {}
+    public void setBox(Box box) {
+        if (this.toString().equals("|"))
+            try {
+                boxes.add()
+            } catch (NullPointerException e) {};
+    }
 
     public String toString() {
         if (getOwner() == Player.NONE) {
