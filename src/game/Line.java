@@ -52,15 +52,14 @@ public class Line {
     public void claim(Player owner) {
         if (owner.equals(Player.RED)) {
             red_lines.add(this);
+
         }
         if (owner.equals(Player.BLUE)) {
             blue_lines.add(this);
         }
     }
 
-    public void setBox(Box box) {
-
-    }
+    //public void setBox(Box box) {}
 
     public String toString() {
         if (getOwner() == Player.NONE) {

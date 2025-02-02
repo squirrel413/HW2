@@ -8,8 +8,8 @@ public class Box {
     private final int row;
     private final int column;
     private final Lines lines;
-    public static ArrayList<Box> red_boxes = new ArrayList<Box>();
-    public static ArrayList<Box> blue_boxes = new ArrayList<Box>();
+    public ArrayList<Box> red_boxes = new ArrayList<Box>();
+    public ArrayList<Box> blue_boxes = new ArrayList<Box>();
 
     //Constructor
     public Box(int row, int column, Lines lines) {
@@ -59,7 +59,7 @@ public class Box {
         || getLeftLine().getOwner().equals(Player.NONE)
         || getTopLine().getOwner().equals(Player.NONE))) {
             if (owner == Player.RED) {
-                red_boxes.add(new Box(row, column, lines));
+                red_boxes.add(this);
             }
             if (owner == Player.BLUE) {
                 blue_boxes.add(this);
