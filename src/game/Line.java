@@ -23,9 +23,6 @@ public class Line {
         this.first = first;
         this.second = second;
         this.owner = Player.NONE;
-        boxes = new ArrayList<>();
-        boxes.add(Box())
-
     }
 
     //Methods

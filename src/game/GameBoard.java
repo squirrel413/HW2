@@ -2,8 +2,6 @@ package game;
 
 public class GameBoard {
     //Field Variables
-    private int rows;
-    private int columns;
     public Lines lines;
     public Box[][] boxes;
 
@@ -19,6 +17,12 @@ public class GameBoard {
                 }
             }
         Lines lines = new Lines(rows, columns, dots);
+        Box[][] boxes = new Box[rows][columns];
+            for (int i = 0; i <= rows; i++) {
+                for (int j = 0; j <= columns; j++) {
+                    boxes[i][j] = new Box(i,j,lines);
+                }
+            }
     }
     //Methods
     public boolean gameOver() {
@@ -38,7 +42,7 @@ public class GameBoard {
 
     //public String toString() {
         //for loop
-            //alternate dots and whores
+            //alternate dots and hori
             //alternate verts and boxes
     //}
 }
