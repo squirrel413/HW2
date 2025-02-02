@@ -3,14 +3,15 @@ package game;
 import java.util.ArrayList;
 
 public class Line {
-    //Field variables
-    private final Dot first;
-    private final Dot second;
+    //Constants
     static final String EMPTY = " ";
     static final String HORI_LINE = "-";
     static final String VERT_LINE = "|";
-    public static ArrayList<Line> red_lines =  new ArrayList<Line>();
-    public static ArrayList<Line> blue_lines =  new ArrayList<Line>();
+
+    //Field variables
+    private final Dot first;
+    private final Dot second;
+    private Player owner;
     public static ArrayList<Box> boxes = new ArrayList<Box>();
 
     //Constructor
@@ -21,6 +22,7 @@ public class Line {
         assert ((second.getColumn() - first.getColumn()) >= 0);
         this.first = first;
         this.second = second;
+        this.owner = Player.NONE;
     }
 
     //Methods
@@ -33,12 +35,7 @@ public class Line {
     }
 
     public Player getOwner() {
-        if (red_lines.contains(this))
-            return Player.RED;
-        if (blue_lines.contains(this))
-            return Player.BLUE;
-        else
-            return Player.NONE;
+        return this.owner;
     }
 
     public ArrayList<Box> getBoxes() {
@@ -50,13 +47,7 @@ public class Line {
     }
 
     public void claim(Player owner) {
-        if (owner.equals(Player.RED)) {
-            red_lines.add(this);
-
-        }
-        if (owner.equals(Player.BLUE)) {
-            blue_lines.add(this);
-        }
+        this.owner = owner;
     }
 
     //public void setBox(Box box) {}

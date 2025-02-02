@@ -5,7 +5,7 @@ public class DotsAndBoxes {
     //Field Variables
     public final int rows;
     public final int columns;
-    static final String PROMPT = "Enter line coordinates:";
+    static final String PROMPT = "> ";
 
     //Constructor
     public DotsAndBoxes(int rows, int columns) {

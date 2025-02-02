@@ -8,14 +8,14 @@ public class Box {
     private final int row;
     private final int column;
     private final Lines lines;
-    public ArrayList<Box> red_boxes = new ArrayList<Box>();
-    public ArrayList<Box> blue_boxes = new ArrayList<Box>();
+    private Player owner;
 
     //Constructor
     public Box(int row, int column, Lines lines) {
         this.row = row;
         this.column = column;
         this.lines = lines;
+        this.owner = Player.NONE;
     }
 
     //Methods
@@ -28,13 +28,7 @@ public class Box {
     }
 
     public Player getOwner() {
-        if (red_boxes.contains(this)){
-            return Player.RED;
-        }
-        if (blue_boxes.contains(this)){
-            return Player.BLUE;
-        }
-        else return Player.NONE;
+        return this.owner;
     }
 
     public Line getTopLine() {
@@ -58,12 +52,7 @@ public class Box {
         || getRightLine().getOwner().equals(Player.NONE)
         || getLeftLine().getOwner().equals(Player.NONE)
         || getTopLine().getOwner().equals(Player.NONE))) {
-            if (owner == Player.RED) {
-                red_boxes.add(this);
-            }
-            if (owner == Player.BLUE) {
-                blue_boxes.add(this);
-            }
+            this.owner = owner;
         }
     }
 
