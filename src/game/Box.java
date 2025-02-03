@@ -54,6 +54,12 @@ public class Box {
         || getLeftLine().getOwner() == (Player.NONE)
         || getTopLine().getOwner() == (Player.NONE))) {
             this.owner = owner;
+            if (owner == Player.RED) {
+                GameBoard.redScore++;
+            }
+            if (owner == Player.BLUE) {
+                GameBoard.blueScore++;
+            }
         }
     }
 

@@ -10,8 +10,9 @@ public class GameBoard {
     public Box[][] boxes;
     public Dot[][] dots;
     public static int movesMade;
-    public static int redScore;
-    public static int blueScore;
+    public static int redScore = 0;
+    public static int blueScore = 0;
+    public static int totalScore = 0;
     public Player playerTurn;
 
     //Constructor
@@ -19,26 +20,27 @@ public class GameBoard {
         this.rows = rows;
         this.columns = columns;
         this.dots = new Dot[rows+1][columns+1]; //Creates all the dots
-            for (int i = 0; i <= rows; i++) {
-                for (int j = 0; j <= columns; j++) {
-                    dots[i][j] = new Dot(i, j);
-                }
+        for (int i = 0; i <= rows; i++) {
+            for (int j = 0; j <= columns; j++) {
+                dots[i][j] = new Dot(i, j);
             }
+        }
         this.lines = new Lines(rows, columns, dots); //Using dots, creates all liens
         this.boxes = new Box[rows][columns]; //Using lines, creates all boxes
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < columns; j++) {
-                    boxes[i][j] = new Box(i,j,lines); //Creates the box, then updates each line's boxes array
-                    boxes[i][j].getLeftLine().setBox(boxes[i][j]);
-                    boxes[i][j].getRightLine().setBox(boxes[i][j]);
-                    boxes[i][j].getTopLine().setBox(boxes[i][j]);
-                    boxes[i][j].getBottomLine().setBox(boxes[i][j]);
-                }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                boxes[i][j] = new Box(i,j,lines); //Creates the box, then updates each line's boxes array
+                boxes[i][j].getLeftLine().setBox(boxes[i][j]);
+                boxes[i][j].getRightLine().setBox(boxes[i][j]);
+                boxes[i][j].getTopLine().setBox(boxes[i][j]);
+                boxes[i][j].getBottomLine().setBox(boxes[i][j]);
             }
+        }
+        playerTurn = Player.RED;
     }
     //Methods
     public boolean gameOver() {
-        return movesMade == lines.size();
+        return movesMade != lines.size();
     }
 
     public Player whoseTurn() {
@@ -50,8 +52,21 @@ public class GameBoard {
     }
 
     public void makeMove(int row1, int column1, int row2, int column2) {
-        if (isLineValid(row1, column1, row2, column2))
+        if (isLineValid(row1, column1, row2, column2)) {
             lines.getLine(row1, column1, row2, column2).claim(playerTurn);
+            movesMade++;
+            if (totalScore == redScore+blueScore) { //if score hasn't changed after a move, change player
+                if (playerTurn == Player.BLUE) {
+                    playerTurn = Player.RED;
+                }
+                else if (playerTurn == Player.RED) {
+                    playerTurn = Player.BLUE;
+                }
+            } else {
+                totalScore = redScore + blueScore; //otherwise update totalScore and continue without change
+            }
+        }
+
     }
 
     public String toString() {
@@ -72,6 +87,9 @@ public class GameBoard {
                     str.append("\n");
                 }
             }
+        str.append("\n");
+        str.append("Turn:" + playerTurn.getLabel() + ", Red Score: " + redScore + ", Blue Score: "
+                + blueScore + ", Moves: " + movesMade + "\n" );
         return str.toString();
     }
 }
