@@ -2,8 +2,8 @@ package game;
 
 public class GameBoard {
     //Field Variables
-    private int rows;
-    private int columns;
+    private final int rows;
+    private final int columns;
     public Lines lines;
     public Box[][] boxes;
     public Dot[][] dots;
@@ -14,16 +14,18 @@ public class GameBoard {
 
     //Constructor
     public GameBoard(int rows, int columns) {
-        Dot[][] dots = new Dot[rows][columns]; //Creates all the dots
+        this.rows = rows;
+        this.columns = columns;
+        this.dots = new Dot[rows+1][columns+1]; //Creates all the dots
             for (int i = 0; i <= rows; i++) {
                 for (int j = 0; j <= columns; j++) {
                     dots[i][j] = new Dot(i, j);
                 }
             }
-        Lines lines = new Lines(rows, columns, dots); //Using dots, creates all liens
-        Box[][] boxes = new Box[rows][columns]; //Using lines, creates all boxes
-            for (int i = 0; i <= rows; i++) {
-                for (int j = 0; j <= columns; j++) {
+        this.lines = new Lines(rows, columns, dots); //Using dots, creates all liens
+        this.boxes = new Box[rows][columns]; //Using lines, creates all boxes
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < columns; j++) {
                     boxes[i][j] = new Box(i,j,lines); //Creates the box, then updates each line's boxes array
                     boxes[i][j].getLeftLine().setBox(boxes[i][j]);
                     boxes[i][j].getRightLine().setBox(boxes[i][j]);
@@ -51,14 +53,22 @@ public class GameBoard {
     }
 
     public String toString() {
-        StringBuilder gameBoard = new StringBuilder();
-        for (int i = 0; i <= rows; i++)
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i <= rows; i++) {
             for (int j = 0; j <= columns; j++) {
-                gameBoard.append(dots[i][j]);
-                gameBoard.append(lines.getLine(i, j, i, j + 1));
+                if (j % 2 == 0) {
+                    str.append(dots[i][j]);
+                    if (j != columns)
+                        str.append(lines.getLine(i, j, i, j + 1).toString());
+                }
+                else {
+                    str.append(lines.getLine(i, j, i + 1, j).toString());
+                    if (j != columns-1)
+                        str.append(boxes[i][j]);
+                }
             }
-            //alternate dots and hori
-            //alternate verts and boxes
-        return gameBoard.toString();
+                str.append("\n");
+            }
+        return str.toString();
     }
 }
