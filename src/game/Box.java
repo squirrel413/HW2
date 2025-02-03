@@ -48,10 +48,10 @@ public class Box {
     }
 
     public void claim(Player owner){
-        if (!(getBottomLine().getOwner().equals(Player.NONE)
-        || getRightLine().getOwner().equals(Player.NONE)
-        || getLeftLine().getOwner().equals(Player.NONE)
-        || getTopLine().getOwner().equals(Player.NONE))) {
+        if (!(getBottomLine().getOwner() == (Player.NONE)
+        || getRightLine().getOwner() == (Player.NONE)
+        || getLeftLine().getOwner() == (Player.NONE)
+        || getTopLine().getOwner() == (Player.NONE))) {
             this.owner = owner;
         }
     }

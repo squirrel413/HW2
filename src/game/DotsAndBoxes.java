@@ -27,6 +27,7 @@ public class DotsAndBoxes {
         Scanner sc = new Scanner(System.in);
         while (play) {
             System.out.print(board.toString());
+
             System.out.print(PROMPT);
             String move = sc.nextLine();
             if (move.equals("q"))
@@ -37,6 +38,7 @@ public class DotsAndBoxes {
                 int row2 = Integer.parseInt(move.split(" ")[2]);
                 int column2 = Integer.parseInt(move.split(" ")[3]);
                 board.makeMove(row1, column1, row2, column2);
+
             }
         }
     }

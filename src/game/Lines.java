@@ -18,8 +18,8 @@ public class Lines {
         this.rows = rows;
         this.columns = columns;
         this.dots = dots;
-        hori = new Line[rows+1][columns+1];
-        verti = new Line[rows+1][columns+1];
+        hori = new Line[rows+1][columns];
+        verti = new Line[rows][columns+1];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j <= columns; j++) {
                 verti[i][j] = (new Line(dots[i][j], dots[i + 1][j]));

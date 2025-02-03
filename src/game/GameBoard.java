@@ -55,19 +55,20 @@ public class GameBoard {
     public String toString() {
         StringBuilder str = new StringBuilder();
         for (int i = 0; i <= rows; i++) {
-            for (int j = 0; j <= columns; j++) {
-                if (j % 2 == 0) {
+                for (int j=0; j<=columns; j++) {
                     str.append(dots[i][j]);
                     if (j != columns)
                         str.append(lines.getLine(i, j, i, j + 1).toString());
                 }
-                else {
-                    str.append(lines.getLine(i, j, i + 1, j).toString());
-                    if (j != columns-1)
-                        str.append(boxes[i][j]);
-                }
-            }
                 str.append("\n");
+                if (i != rows) {
+                    for (int k = 0; k <= columns; k++) {
+                        str.append(lines.getLine(i, k, i + 1, k).toString());
+                        if (k != columns)
+                            str.append(boxes[i][k]);
+                    }
+                    str.append("\n");
+                }
             }
         return str.toString();
     }
