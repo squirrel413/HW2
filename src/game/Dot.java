@@ -1,5 +1,7 @@
 package game;
-
+/*
+* Author:Group 5
+* */
 public class Dot {
     //Field variables
     private final int row;

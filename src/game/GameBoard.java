@@ -1,5 +1,7 @@
 package game;
-
+/*
+* Author:Group 5
+* */
 public class GameBoard {
     //Field Variables
     private final int rows;

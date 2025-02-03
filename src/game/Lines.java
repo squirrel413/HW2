@@ -1,6 +1,7 @@
 package game;
-
-import java.util.ArrayList;
+/*
+* Author:Group 5
+* */
 
 public class Lines {
     //Field variables
