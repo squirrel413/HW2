@@ -12,7 +12,7 @@ public class Line {
     private final Dot first;
     private final Dot second;
     private Player owner;
-    private static ArrayList<Box> boxes;
+    private static final ArrayList<Box> boxes = new ArrayList<>();
 
     //Constructor
     public Line(Dot first, Dot second) {
